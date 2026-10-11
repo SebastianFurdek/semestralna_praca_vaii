@@ -10,17 +10,6 @@ Cieľom projektu je vytvoriť webovú aplikáciu na plánovanie a zaznamenávani
 
 Súčasťou aplikácie bude aj voliteľná funkcia automatického zvyšovania tréningovej hmotnosti podľa používateľom nastaveného prírastku a časového intervalu. Používateľ bude môcť navrhované zvýšenie potvrdiť, odložiť alebo hmotnosť upravovať manuálne. Cieľom je zjednodušiť organizáciu tréningov a sledovanie dlhodobého pokroku.
 
-# Role v projekte
-
-### 1. Návštevník
-Návštevník môže zobraziť úvodnú stránku aplikácie, oboznámiť sa s jej funkciami a zaregistrovať sa alebo prihlásiť do existujúceho účtu. Nemá prístup k tréningovým plánom ani osobným údajom používateľov.
-
-### 2. Registrovaný používateľ
-Registrovaný používateľ je hlavnou rolou aplikácie. Môže vytvárať a upravovať vlastné tréningové plány, spravovať cviky, zaznamenávať absolvované tréningy a sledovať históriu svojich výsledkov. Zároveň môže nastavovať automatické zvyšovanie tréningovej hmotnosti a spravovať svoje telesné merania a osobné údaje.
-
-### 3. Administrátor
-Administrátor zodpovedá za správu používateľských účtov a základnú kontrolu fungovania aplikácie. Má oprávnenie spravovať účty používateľov a riešiť prípadné problémy so systémom. Nemal by automaticky získavať prístup k súkromným tréningovým údajom používateľov, pokiaľ to nie je nevyhnutné na konkrétnu administratívnu činnosť.
-
 ## Role v projekte
 
 ### 1. Návštevník
@@ -32,6 +21,38 @@ Registrovaný používateľ môže vytvárať a upravovať vlastné tréningové
 ### 3. Administrátor
 Administrátor zodpovedá za správu používateľských účtov a základnú správu systému. Môže zobrazovať zoznam registrovaných používateľov a podľa potreby odstraňovať ich účty. Pri odstránení účtu sa odstránia aj údaje, ktoré k nemu patria, napríklad tréningové plány, história tréningov a telesné merania. Administrátor má oprávnenia, ktoré bežný používateľ nemá.
 
+## Prípady použitia podľa rolí
+
+### 1. Návštevník
+
+- **Návštevník si zobrazí úvodnú stránku** – oboznámi sa s účelom aplikácie a jej hlavnými funkciami.
+- **Návštevník si prezrie dostupné informácie o aplikácii** – zistí, na čo aplikácia slúži a aké možnosti ponúka.
+- **Návštevník sa zaregistruje** – vytvorí si používateľský účet zadaním potrebných údajov.
+- **Návštevník sa prihlási** – prihlási sa do svojho existujúceho účtu.
+
+### 2. Registrovaný používateľ
+
+- **Používateľ si zobrazí svoj prehľad** – prezrie si svoje tréningové plány, posledné absolvované tréningy a zaznamenané telesné merania.
+- **Používateľ vytvorí tréningový plán** – vytvorí nový plán a rozdelí ho na jednotlivé tréningové dni.
+- **Používateľ upraví alebo odstráni tréningový plán** – zmení údaje existujúceho plánu alebo odstráni plán, ktorý už nepotrebuje.
+- **Používateľ spravuje cviky** – pridáva nové cviky, zobrazuje ich, upravuje ich údaje alebo ich odstraňuje.
+- **Používateľ priradí cviky k tréningovému dňu** – vyberie cviky a nastaví ich poradie, cieľový počet sérií, opakovaní a tréningovú hmotnosť.
+- **Používateľ zaznamená absolvovaný tréning** – pri jednotlivých cvikoch zaznamená vykonané série, počet opakovaní a použité hmotnosti.
+- **Používateľ si zobrazí históriu tréningov** – prezrie si predchádzajúce tréningy a podrobnosti o svojich výkonoch.
+- **Používateľ zaznamená telesné merania** – uloží svoju telesnú hmotnosť a vybrané obvody tela.
+- **Používateľ upraví svoje telesné merania** – opraví alebo odstráni nesprávne či nepotrebné záznamy.
+- **Používateľ nastaví automatické zvyšovanie tréningovej hmotnosti** – určí veľkosť prírastku a časový interval, po ktorom sa má zvýšenie navrhnúť.
+- **Používateľ rozhodne o navrhovanom zvýšení hmotnosti** – potvrdí navrhované zvýšenie, odloží ho alebo upraví hmotnosť manuálne.
+- **Používateľ spravuje svoj účet** – upraví dostupné osobné údaje alebo zmení nastavenia účtu.
+
+### 3. Administrátor
+
+- **Administrátor si zobrazí zoznam používateľov** – prezrie si registrované používateľské účty.
+- **Administrátor spravuje používateľské účty** – vykoná povolené administratívne úkony nad účtami používateľov.
+- **Administrátor odstráni používateľský účet** – odstráni účet a súvisiace údaje podľa pravidiel aplikácie.
+- **Administrátor skontroluje základné fungovanie aplikácie** – rieši základné problémy súvisiace so správou systému.
+
+Administrátor vykonáva iba činnosti, na ktoré má oprávnenie. Prístup k súkromným tréningovým údajom používateľov nie je automaticky súčasťou jeho práv.
 ## Plánované entity
 
 ### 1. Používateľ (User)
@@ -100,13 +121,15 @@ Predstavuje záznam telesných parametrov používateľa v konkrétnom čase.
 ## Vzťahy medzi entitami
 - **Používateľ – Tréningový plán 1:N** – Jeden používateľ môže mať viac tréningových plánov, pričom každý tréningový plán patrí jednému používateľovi.
 - **Používateľ – Cvik 1:N** – Jeden používateľ môže vytvoriť viac cvikov, pričom každý cvik patrí jednému používateľovi.
-- ** Tréningový plán – Tréningový deň 1:N** – Jeden tréningový plán môže obsahovať viac tréningových dní, pričom každý tréningový deň patrí jednému tréningovému plánu.
+- **Tréningový plán – Tréningový deň 1:N** – Jeden tréningový plán môže obsahovať viac tréningových dní, pričom každý tréningový deň patrí jednému tréningovému plánu.
 - **Tréningový deň – Cvik v tréningovom pláne 1:N** – Jeden tréningový deň môže obsahovať viac cvikov, pričom každý záznam cviku patrí jednému tréningovému dňu.
 - **Používateľ – Absolvovaný tréning 1:N** – Jeden používateľ môže zaznamenať viac absolvovaných tréningov, pričom každý absolvovaný tréning patrí jednému používateľovi.
 - **Tréningový deň – Absolvovaný tréning 1:N** – Jeden tréningový deň môže byť použitý pri viacerých absolvovaných tréningoch, pričom každý absolvovaný tréning môže odkazovať najviac na jeden tréningový deň.
 - **Absolvovaný tréning – Vykonaný cvik 1:N** – Jeden absolvovaný tréning môže obsahovať viac vykonaných cvikov, pričom každý vykonaný cvik patrí jednému absolvovanému tréningu.
 - **Cvik v tréningovom pláne – Vykonaný cvik 1:N** – Jeden cvik v tréningovom pláne môže byť zaznamenaný vo viacerých absolvovaných tréningoch, pričom každý vykonaný cvik môže odkazovať najviac na jeden cvik v tréningovom pláne.
 - **Vykonaný cvik – Záznam série 1:N** – Jeden vykonaný cvik môže obsahovať viac záznamov sérií, pričom každý záznam série patrí jednému vykonanému cviku.
+- **Cvik – Cvik v tréningovom pláne 1:N** – Jeden cvik môže byť zaradený do viacerých tréningových dní, pričom každý záznam v tréningovom pláne odkazuje na jeden cvik.
+- **Cvik – Vykonaný cvik 1:N** – Jeden cvik môže byť zaznamenaný vo viacerých absolvovaných tréningoch, pričom každý záznam vykonaného cviku môže odkazovať na jeden cvik.
 - **Používateľ – Telesné meranie 1:N** – Jeden používateľ môže mať viac záznamov telesných meraní, pričom každý záznam telesného merania patrí jednému používateľovi.
 
 ## Hlavné stránky aplikácie
