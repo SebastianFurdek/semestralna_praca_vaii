@@ -98,16 +98,16 @@ Predstavuje záznam telesných parametrov používateľa v konkrétnom čase.
 **Vzťahy:** Každé meranie patrí jednému používateľovi, ktorý môže mať zaznamenaných viacero meraní v rôznych dátumoch.
 
 ## Vzťahy medzi entitami
-### Používateľ – Tréningový plán 1:N – Jeden používateľ môže mať viac tréningových plánov, pričom každý tréningový plán patrí jednému používateľovi.
-### Používateľ – Cvik 1:N – Jeden používateľ môže vytvoriť viac cvikov, pričom každý cvik patrí jednému používateľovi.
-### Tréningový plán – Tréningový deň 1:N – Jeden tréningový plán môže obsahovať viac tréningových dní, pričom každý tréningový deň patrí jednému tréningovému plánu.
-### Tréningový deň – Cvik v tréningovom pláne 1:N – Jeden tréningový deň môže obsahovať viac cvikov, pričom každý záznam cviku patrí jednému tréningovému dňu.
-### Používateľ – Absolvovaný tréning 1:N – Jeden používateľ môže zaznamenať viac absolvovaných tréningov, pričom každý absolvovaný tréning patrí jednému používateľovi.
-### Tréningový deň – Absolvovaný tréning 1:N – Jeden tréningový deň môže byť použitý pri viacerých absolvovaných tréningoch, pričom každý absolvovaný tréning môže odkazovať najviac na jeden tréningový deň.
-### Absolvovaný tréning – Vykonaný cvik 1:N – Jeden absolvovaný tréning môže obsahovať viac vykonaných cvikov, pričom každý vykonaný cvik patrí jednému absolvovanému tréningu.
-### Cvik v tréningovom pláne – Vykonaný cvik 1:N – Jeden cvik v tréningovom pláne môže byť zaznamenaný vo viacerých absolvovaných tréningoch, pričom každý vykonaný cvik môže odkazovať najviac na jeden cvik v tréningovom pláne.
-### Vykonaný cvik – Záznam série 1:N – Jeden vykonaný cvik môže obsahovať viac záznamov sérií, pričom každý záznam série patrí jednému vykonanému cviku.
-### Používateľ – Telesné meranie 1:N – Jeden používateľ môže mať viac záznamov telesných meraní, pričom každý záznam telesného merania patrí jednému používateľovi.
+- **Používateľ – Tréningový plán 1:N** – Jeden používateľ môže mať viac tréningových plánov, pričom každý tréningový plán patrí jednému používateľovi.
+- **Používateľ – Cvik 1:N** – Jeden používateľ môže vytvoriť viac cvikov, pričom každý cvik patrí jednému používateľovi.
+- ** Tréningový plán – Tréningový deň 1:N** – Jeden tréningový plán môže obsahovať viac tréningových dní, pričom každý tréningový deň patrí jednému tréningovému plánu.
+- **Tréningový deň – Cvik v tréningovom pláne 1:N** – Jeden tréningový deň môže obsahovať viac cvikov, pričom každý záznam cviku patrí jednému tréningovému dňu.
+- **Používateľ – Absolvovaný tréning 1:N** – Jeden používateľ môže zaznamenať viac absolvovaných tréningov, pričom každý absolvovaný tréning patrí jednému používateľovi.
+- **Tréningový deň – Absolvovaný tréning 1:N** – Jeden tréningový deň môže byť použitý pri viacerých absolvovaných tréningoch, pričom každý absolvovaný tréning môže odkazovať najviac na jeden tréningový deň.
+- **Absolvovaný tréning – Vykonaný cvik 1:N** – Jeden absolvovaný tréning môže obsahovať viac vykonaných cvikov, pričom každý vykonaný cvik patrí jednému absolvovanému tréningu.
+- **Cvik v tréningovom pláne – Vykonaný cvik 1:N** – Jeden cvik v tréningovom pláne môže byť zaznamenaný vo viacerých absolvovaných tréningoch, pričom každý vykonaný cvik môže odkazovať najviac na jeden cvik v tréningovom pláne.
+- **Vykonaný cvik – Záznam série 1:N** – Jeden vykonaný cvik môže obsahovať viac záznamov sérií, pričom každý záznam série patrí jednému vykonanému cviku.
+- **Používateľ – Telesné meranie 1:N** – Jeden používateľ môže mať viac záznamov telesných meraní, pričom každý záznam telesného merania patrí jednému používateľovi.
 
 ## Hlavné stránky aplikácie
 
