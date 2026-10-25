@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LevelUP – Record Workout</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Horná lišta -->
+  <header class="topbar">
+    <a class="brand" href="index.html">LevelUP</a>
+
+    <button class="profile-button"
+            type="button"
+            aria-label="Používateľský profil">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M4.5 20a7.5 7.5 0 0 1 15 0"></path>
+      </svg>
+    </button>
+  </header>
+
+  <div class="layout">
+
+    <!-- Bočné menu -->
+    <aside class="sidebar">
+      <nav class="navigation" aria-label="Hlavná navigácia">
+        <a class="navigation-link" href="Dashboard.html">
+          Dashboard
+        </a>
+        <a class="navigation-link active" href="#-plans">
+          Training Plans
+        </a>
+
+        <a class="navigation-link" href="#workout-history">
+          Workout History
+        </a>
+
+        <a class="navigation-link" href="#body-measurements">
+          Body Measurements
+        </a>
+
+        <a class="navigation-link settings-link" href="#settings">
+          Settings
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Hlavný obsah -->
+    <main class="main-content">
+
+      <!-- Nadpis stránky -->
+      <section class="page-heading">
+        <h1>Record Workout</h1>
+        <p>Enter the weight and repetitions for each set.</p>
+      </section>
+
+      <!-- Informácie o tréningu -->
+      <section class="workout-information">
+
+        <div class="workout-plan">
+          <span>Workout</span>
+          <strong>Full Body A</strong>
+        </div>
+
+        <div class="workout-date">
+          <label for="workout-date">Date</label>
+          <input
+            type="date"
+            id="workout-date"
+            name="workout-date"
+            value="2026-10-18"
+            required
+          >
+        </div>
+
+      </section>
+
+      <!-- Formulár na zaznamenanie tréningu -->
+      <form action="#" method="post" class="record-workout-form">
+
+        <!-- Bench Press -->
+        <fieldset class="exercise-card">
+          <legend class="visually-hidden">Bench Press</legend>
+
+          <div class="exercise-header">
+            <h2>Bench Press</h2>
+
+            <button type="button" class="button">
+              Add Set
+            </button>
+          </div>
+
+          <div class="set-table">
+
+            <div class="set-row set-header">
+              <span>Set</span>
+              <span>Weight (kg)</span>
+              <span>Reps</span>
+            </div>
+
+            <div class="set-row">
+              <span class="set-number">1</span>
+
+              <input
+                type="number"
+                name="bench-press-weight[]"
+                placeholder="Enter weight"
+                min="0"
+                step="0.5"
+                aria-label="Bench Press, séria 1, váha v kilogramoch"
+                required
+              >
+
+              <input
+                type="number"
+                name="bench-press-reps[]"
+                placeholder="Enter reps"
+                min="1"
+                step="1"
+                aria-label="Bench Press, séria 1, počet opakovaní"
+                required
+              >
+            </div>
+
+            <div class="set-row">
+              <span class="set-number">2</span>
+
+              <input
+                type="number"
+                name="bench-press-weight[]"
+                placeholder="Enter weight"
+                min="0"
+                step="0.5"
+                aria-label="Bench Press, séria 2, váha v kilogramoch"
+                required
+              >
+
+              <input
+                type="number"
+                name="bench-press-reps[]"
+                placeholder="Enter reps"
+                min="1"
+                step="1"
+                aria-label="Bench Press, séria 2, počet opakovaní"
+                required
+              >
+            </div>
+
+          </div>
+        </fieldset>
+
+        <!-- Squats -->
+        <fieldset class="exercise-card">
+          <legend class="visually-hidden">Squats</legend>
+
+          <div class="exercise-header">
+            <h2>Squats</h2>
+
+            <button type="button" class="button">
+              Add Set
+            </button>
+          </div>
+
+          <div class="set-table">
+
+            <div class="set-row set-header">
+              <span>Set</span>
+              <span>Weight (kg)</span>
+              <span>Reps</span>
+            </div>
+
+            <div class="set-row">
+              <span class="set-number">1</span>
+
+              <input
+                type="number"
+                name="squats-weight[]"
+                placeholder="Enter weight"
+                min="0"
+                step="0.5"
+                aria-label="Squats, séria 1, váha v kilogramoch"
+                required
+              >
+
+              <input
+                type="number"
+                name="squats-reps[]"
+                placeholder="Enter reps"
+                min="1"
+                step="1"
+                aria-label="Squats, séria 1, počet opakovaní"
+                required
+              >
+            </div>
+
+            <div class="set-row">
+              <span class="set-number">2</span>
+
+              <input
+                type="number"
+                name="squats-weight[]"
+                placeholder="Enter weight"
+                min="0"
+                step="0.5"
+                aria-label="Squats, séria 2, váha v kilogramoch"
+                required
+              >
+
+              <input
+                type="number"
+                name="squats-reps[]"
+                placeholder="Enter reps"
+                min="1"
+                step="1"
+                aria-label="Squats, séria 2, počet opakovaní"
+                required
+              >
+            </div>
+
+          </div>
+        </fieldset>
+
+        <!-- Deadlift -->
+        <fieldset class="exercise-card">
+          <legend class="visually-hidden">Deadlift</legend>
+
+          <div class="exercise-header">
+            <h2>Deadlift</h2>
+
+            <button type="button" class="button">
+              Add Set
+            </button>
+          </div>
+
+          <div class="set-table">
+
+            <div class="set-row set-header">
+              <span>Set</span>
+              <span>Weight (kg)</span>
+              <span>Reps</span>
+            </div>
+
+            <div class="set-row">
+              <span class="set-number">1</span>
+
+              <input
+                type="number"
+                name="deadlift-weight[]"
+                placeholder="Enter weight"
+                min="0"
+                step="0.5"
+                aria-label="Deadlift, séria 1, váha v kilogramoch"
+                required
+              >
+
+              <input
+                type="number"
+                name="deadlift-reps[]"
+                placeholder="Enter reps"
+                min="1"
+                step="1"
+                aria-label="Deadlift, séria 1, počet opakovaní"
+                required
+              >
+            </div>
+
+            <div class="set-row">
+              <span class="set-number">2</span>
+
+              <input
+                type="number"
+                name="deadlift-weight[]"
+                placeholder="Enter weight"
+                min="0"
+                step="0.5"
+                aria-label="Deadlift, séria 2, váha v kilogramoch"
+                required
+              >
+
+              <input
+                type="number"
+                name="deadlift-reps[]"
+                placeholder="Enter reps"
+                min="1"
+                step="1"
+                aria-label="Deadlift, séria 2, počet opakovaní"
+                required
+              >
+            </div>
+
+          </div>
+        </fieldset>
+
+        <!-- Akcie formulára -->
+        <div class="form-actions">
+
+          <button type="button" class="button">
+            Add Exercise
+          </button>
+
+          <div class="finish-workout">
+            <p>Save this workout to your history.</p>
+
+            <button type="submit" class="button button-primary">
+              Finish Workout
+            </button>
+          </div>
+
+        </div>
+
+      </form>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>
+```

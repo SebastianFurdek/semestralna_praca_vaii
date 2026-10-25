@@ -1,1 +1,175 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LevelUP – Dashboard</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="app">
 
+  <!-- Horná lišta -->
+  <header class="topbar">
+    <a class="brand" href="#dashboard">LevelUP</a>
+
+    <button class="profile-button" type="button" aria-label="Používateľský profil">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M4.5 20a7.5 7.5 0 0 1 15 0"></path>
+      </svg>
+    </button>
+  </header>
+
+  <div class="layout">
+
+    <!-- Bočné menu -->
+    <aside class="sidebar">
+      <nav class="navigation" aria-label="Hlavná navigácia">
+        <a class="navigation-link active" href="#dashboard">
+          Dashboard
+        </a>
+
+        <a class="navigation-link" href="TrainingPlans.html">
+          Training Plans
+        </a>
+
+        <a class="navigation-link" href="#workout-history">
+          Workout History
+        </a>
+
+        <a class="navigation-link" href="#body-measurements">
+          Body Measurements
+        </a>
+
+        <a class="navigation-link settings-link" href="#settings">
+          Settings
+        </a>
+
+      </nav>
+    </aside>
+
+    <!-- Hlavný obsah -->
+    <main class="main-content" id="dashboard">
+
+      <!-- Nadpis stránky -->
+      <section class="page-heading">
+        <h1>Dashboard</h1>
+        <p>Plan your training and review your recent workouts.</p>
+      </section>
+
+      <!-- Prehľadové karty -->
+      <section class="summary-cards" aria-label="Prehľad tréningov">
+
+        <article class="summary-card">
+          <h2>Workouts this week</h2>
+          <div class="summary-value"></div>
+          <div class="summary-detail"></div>
+        </article>
+
+        <article class="summary-card">
+          <h2>Current training plan</h2>
+          <div class="summary-value"></div>
+          <div class="summary-detail"></div>
+        </article>
+
+        <article class="summary-card">
+          <h2>Training progress</h2>
+          <div class="summary-value"></div>
+          <div class="summary-detail"></div>
+        </article>
+
+      </section>
+
+      <!-- Nadchádzajúce tréningy -->
+      <section class="content-section" id="training-plans">
+        <h2>Upcoming workouts</h2>
+
+        <div class="workout-list">
+
+          <article class="workout-card">
+            <p class="workout-date">
+              Today · 18 Oct 2026
+            </p>
+
+            <h3>Full Body A</h3>
+
+            <p class="workout-details">
+              3 exercises · Approx. 45 min
+            </p>
+
+            <a class="button" href="#record-workout-a">
+              Record Workout
+            </a>
+          </article>
+
+          <article class="workout-card">
+            <p class="workout-date">
+              Next session · 20 Oct 2026
+            </p>
+
+            <h3>Full Body B</h3>
+
+            <p class="workout-details">
+              4 exercises · Approx. 50 min
+            </p>
+
+            <a class="button" href="#record-workout-b">
+              Record Workout
+            </a>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Posledná aktivita -->
+      <section class="content-section" id="workout-history">
+        <h2>Recent activity</h2>
+
+        <div class="activity-list">
+
+          <article class="activity-item">
+            <div class="activity-information">
+              <h3>Full Body B completed</h3>
+              <p>4 exercises · 12 sets</p>
+            </div>
+
+            <time datetime="2026-10-16">
+              16 Oct 2026
+            </time>
+          </article>
+
+          <article class="activity-item">
+            <div class="activity-information">
+              <h3>Full Body A completed</h3>
+              <p>3 exercises · 9 sets</p>
+            </div>
+
+            <time datetime="2026-10-14">
+              14 Oct 2026
+            </time>
+          </article>
+
+          <article class="activity-item">
+            <div class="activity-information">
+              <h3>Training plan updated</h3>
+              <p>Full body · 3 days per week</p>
+            </div>
+
+            <time datetime="2026-10-12">
+              12 Oct 2026
+            </time>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Nastavenia -->
+      <section id="settings" aria-label="Nastavenia"></section>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>
+```
