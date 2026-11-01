@@ -7,51 +7,36 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-    <title><?= App\Configuration::APP_NAME ?></title>
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= $link->asset('favicons/apple-touch-icon.png') ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= $link->asset('favicons/favicon-32x32.png') ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= $link->asset('favicons/favicon-16x16.png') ?>">
-    <link rel="manifest" href="<?= $link->asset('favicons/site.webmanifest') ?>">
-    <link rel="shortcut icon" href="<?= $link->asset('favicons/favicon.ico') ?>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<?= $link->asset('css/styl.css') ?>">
-    <script src="<?= $link->asset('js/script.js') ?>"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LevelUP</title>
+    <link rel="stylesheet" href="<?= $link->asset('css/style.css') ?>">
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="<?= $link->url('home.index') ?>">
-            <img src="<?= $link->asset('images/vaiicko_logo.png') ?>" title="<?= App\Configuration::APP_NAME ?>" alt="Framework Logo">
-        </a>
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="<?= $link->url('home.contact') ?>">Contact</a>
-            </li>
-        </ul>
-        <?php if ($user->isLoggedIn()) { ?>
-            <span class="navbar-text">Logged in user: <b><?= e($user->getName()) ?></b></span>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url('auth.logout') ?>">Log out</a>
-                </li>
-            </ul>
-        <?php } else { ?>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= App\Configuration::LOGIN_URL ?>">Log in</a>
-                </li>
-            </ul>
-        <?php } ?>
-    </div>
-</nav>
-<div class="container-fluid mt-3">
-    <div class="web-content">
-        <?= $contentHTML ?>
+<div class="app">
+    <header class="topbar">
+        <a class="brand" href="<?= $link->url('home.index') ?>">LevelUP</a>
+        <button class="profile-button" type="button" aria-label="Používateľský profil">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4.5 20a7.5 7.5 0 0 1 15 0"></path>
+            </svg>
+        </button>
+    </header>
+    <div class="layout">
+        <aside class="sidebar">
+            <nav class="navigation" aria-label="Hlavná navigácia">
+                <a class="navigation-link <?= $link->url('home.index') === ($_SERVER['REQUEST_URI'] ?? '') ? 'active' : '' ?>"
+                   href="<?= $link->url('home.index') ?>">Dashboard</a>
+                <a class="navigation-link <?= $link->url('home.trainingPlans') === ($_SERVER['REQUEST_URI'] ?? '') ? 'active' : '' ?>"
+                   href="<?= $link->url('home.trainingPlans') ?>">Training Plans</a>
+                <a class="navigation-link" href="<?= $link->url('home.index') ?>#workout-history">Workout History</a>
+                <a class="navigation-link" href="<?= $link->url('home.index') ?>#body-measurements">Body Measurements</a>
+                <a class="navigation-link settings-link" href="<?= $link->url('home.index') ?>#settings">Settings</a>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <?= $contentHTML ?>
+        </main>
     </div>
 </div>
 </body>

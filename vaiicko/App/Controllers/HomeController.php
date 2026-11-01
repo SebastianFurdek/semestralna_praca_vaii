@@ -43,14 +43,11 @@ class HomeController extends BaseController
     }
 
     /**
-     * Displays the contact page.
+     * Displays the workout recording page.
      *
-     * This action serves the HTML view for the contact page, which is accessible to all users without any
-     * authorization.
-     *
-     * @return Response The response object containing the rendered HTML for the contact page.
+     * @return Response The response object containing the rendered HTML for the workout page.
      */
-    public function contact(Request $request): Response
+    public function trainingPlans(Request $request): Response
     {
         return $this->html();
     }
