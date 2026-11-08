@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Exercise;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
@@ -50,5 +51,54 @@ class HomeController extends BaseController
     public function trainingPlans(Request $request): Response
     {
         return $this->html();
+    }
+
+    public function exercises(Request $request): Response
+    {
+        return $this->html(['exercises' => Exercise::getAll(orderBy: 'created_at DESC')]);
+    }
+
+    public function saveExercise(Request $request): Response
+    {
+        $exercise = new Exercise();
+        $exercise->setFromRequest($request, ['name', 'description']);
+        $exercise->userId = 1;
+        $exercise->save();
+
+        return $this->redirect($this->url('home.exercises'));
+    }
+
+    public function editExercise(Request $request): Response
+    {
+        $exercise = Exercise::getOne((int)$request->get('id'));
+        if ($exercise === null) {
+            return $this->redirect($this->url('home.exercises'));
+        }
+
+        return $this->html([
+            'exercise' => $exercise,
+            'exercises' => Exercise::getAll(orderBy: 'created_at DESC'),
+        ], 'exercises');
+    }
+
+    public function updateExercise(Request $request): Response
+    {
+        $exercise = Exercise::getOne((int)$request->post('id'));
+        if ($exercise !== null) {
+            $exercise->setFromRequest($request, ['name', 'description']);
+            $exercise->save();
+        }
+
+        return $this->redirect($this->url('home.exercises'));
+    }
+
+    public function deleteExercise(Request $request): Response
+    {
+        $exercise = Exercise::getOne((int)$request->post('id'));
+        if ($exercise !== null) {
+            $exercise->delete();
+        }
+
+        return $this->redirect($this->url('home.exercises'));
     }
 }

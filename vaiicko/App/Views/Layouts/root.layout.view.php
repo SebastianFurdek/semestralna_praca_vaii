@@ -27,11 +27,14 @@
             <nav class="navigation" aria-label="Hlavná navigácia">
                 <a class="navigation-link <?= $link->url('home.index') === ($_SERVER['REQUEST_URI'] ?? '') ? 'active' : '' ?>"
                    href="<?= $link->url('home.index') ?>">Dashboard</a>
+                <a class="navigation-link <?= $link->url('home.exercises') === ($_SERVER['REQUEST_URI'] ?? '') ? 'active' : '' ?>"
+                   href="<?= $link->url('home.exercises') ?>">Exercises</a>
                 <a class="navigation-link <?= $link->url('home.trainingPlans') === ($_SERVER['REQUEST_URI'] ?? '') ? 'active' : '' ?>"
                    href="<?= $link->url('home.trainingPlans') ?>">Training Plans</a>
                 <a class="navigation-link" href="<?= $link->url('home.index') ?>#workout-history">Workout History</a>
                 <a class="navigation-link" href="<?= $link->url('home.index') ?>#body-measurements">Body Measurements</a>
                 <a class="navigation-link settings-link" href="<?= $link->url('home.index') ?>#settings">Settings</a>
+
             </nav>
         </aside>
         <main class="main-content">
