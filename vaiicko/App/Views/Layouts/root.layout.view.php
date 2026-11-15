@@ -31,6 +31,8 @@
                    href="<?= $link->url('home.exercises') ?>">Exercises</a>
                 <a class="navigation-link <?= $link->url('home.trainingPlans') === ($_SERVER['REQUEST_URI'] ?? '') ? 'active' : '' ?>"
                    href="<?= $link->url('home.trainingPlans') ?>">Training Plans</a>
+                <a class="navigation-link <?= $link->url('home.workouts') === ($_SERVER['REQUEST_URI'] ?? '') ? 'active' : '' ?>"
+                   href="<?= $link->url('home.workouts') ?>">Workouts</a>
                 <a class="navigation-link" href="<?= $link->url('home.index') ?>#workout-history">Workout History</a>
                 <a class="navigation-link" href="<?= $link->url('home.index') ?>#body-measurements">Body Measurements</a>
                 <a class="navigation-link settings-link" href="<?= $link->url('home.index') ?>#settings">Settings</a>

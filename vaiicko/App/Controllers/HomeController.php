@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\Exercise;
+use App\Models\Workout;
+use App\Models\WorkoutExercise;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
@@ -53,6 +55,69 @@ class HomeController extends BaseController
         return $this->html();
     }
 
+    public function workouts(Request $request): Response
+    {
+        $workouts = Workout::getAll(orderBy: 'created_at DESC');
+
+        return $this->html([
+            'workouts' => $workouts,
+            'exerciseCounts' => $this->getWorkoutExerciseCounts($workouts),
+            'exercises' => Exercise::getAll(orderBy: 'name ASC'),
+        ]);
+    }
+
+    public function saveWorkout(Request $request): Response
+    {
+        $workout = new Workout();
+        $workout->setFromRequest($request, ['name']);
+        $workout->userId = 1;
+        $workout->save();
+        $this->saveWorkoutExercises($workout, $request->post('exerciseIds'));
+
+        return $this->redirect($this->url('home.workouts'));
+    }
+
+    public function editWorkout(Request $request): Response
+    {
+        $workout = Workout::getOne((int)$request->get('id'));
+        if ($workout === null) {
+            return $this->redirect($this->url('home.workouts'));
+        }
+
+        return $this->html([
+            'workout' => $workout,
+            'selectedExerciseIds' => $this->getWorkoutExerciseIds($workout->id),
+            'workouts' => Workout::getAll(orderBy: 'created_at DESC'),
+            'exerciseCounts' => $this->getWorkoutExerciseCounts(Workout::getAll(orderBy: 'created_at DESC')),
+            'exercises' => Exercise::getAll(orderBy: 'name ASC'),
+        ], 'workouts');
+    }
+
+    public function updateWorkout(Request $request): Response
+    {
+        $workout = Workout::getOne((int)$request->post('id'));
+        if ($workout !== null) {
+            $workout->setFromRequest($request, ['name']);
+            $workout->save();
+            foreach (WorkoutExercise::getAll('workout_id = ?', [$workout->id]) as $workoutExercise) {
+                $workoutExercise->delete();
+            }
+            $this->saveWorkoutExercises($workout, $request->post('exerciseIds'));
+        }
+
+        return $this->redirect($this->url('home.workouts'));
+    }
+
+    public function deleteWorkout(Request $request): Response
+    {
+        $workout = Workout::getOne((int)$request->post('id'));
+        if ($workout !== null) {
+            $workout->delete();
+        }
+
+        return $this->redirect($this->url('home.workouts'));
+    }
+
     public function exercises(Request $request): Response
     {
         return $this->html(['exercises' => Exercise::getAll(orderBy: 'created_at DESC')]);
@@ -100,5 +165,46 @@ class HomeController extends BaseController
         }
 
         return $this->redirect($this->url('home.exercises'));
+    }
+
+    private function getWorkoutExerciseIds(?int $workoutId): array
+    {
+        if ($workoutId === null) {
+            return [];
+        }
+
+        return array_map(
+            static fn(WorkoutExercise $item): int => $item->exerciseId,
+            WorkoutExercise::getAll('workout_id = ?', [$workoutId])
+        );
+    }
+
+    private function getWorkoutExerciseCounts(array $workouts): array
+    {
+        $exerciseCounts = [];
+        foreach ($workouts as $workout) {
+            $exerciseCounts[$workout->id] = WorkoutExercise::getCount('workout_id = ?', [$workout->id]);
+        }
+
+        return $exerciseCounts;
+    }
+
+    private function saveWorkoutExercises(Workout $workout, mixed $exerciseIds): void
+    {
+        if (!is_array($exerciseIds)) {
+            return;
+        }
+
+        $exerciseIds = array_unique(array_map('intval', $exerciseIds));
+        foreach ($exerciseIds as $exerciseId) {
+            if ($exerciseId <= 0 || Exercise::getOne($exerciseId) === null) {
+                continue;
+            }
+
+            $workoutExercise = new WorkoutExercise();
+            $workoutExercise->workoutId = (int)$workout->id;
+            $workoutExercise->exerciseId = $exerciseId;
+            $workoutExercise->save();
+        }
     }
 }
